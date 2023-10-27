@@ -4,7 +4,6 @@ import math
 
 class PasswordStrengthTester:
     def __init__(self, password):
-        # Définir les critères de l'ANSSI
         self.password = password
         self.min_length = 8
         self.min_entropy = 70

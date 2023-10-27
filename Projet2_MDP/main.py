@@ -3,7 +3,6 @@
 from password_strength import PasswordStrengthTester
 from password_generator import PasswordGenerator
 from passphrase_generator import PassphraseGenerator
-from wordlist import wordlist
 
 def main():
     print("Bienvenue dans l'outil de sécurité !")
@@ -35,10 +34,8 @@ def main():
             strength.calculate_entropy()
 
         elif choice == "3":
-            generator = PassphraseGenerator(wordlist)
-            num_words = int(input("Nombre de mots dans la passphrase : "))
-            passphrase = generator.generate_passphrase(num_words)
-            print(f"Passphrase générée : {passphrase}")
+            generator = PassphraseGenerator()
+            passphrase = generator.generate_passphrase()
 
         elif choice == "4":
             print("Merci d'avoir utilisé notre outil de sécurité !")

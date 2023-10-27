@@ -1,18 +1,33 @@
 #!/usr/bin/env python
 # passphrase_generator.py
 import random
-import wordlist
 
 class PassphraseGenerator:
-    def __init__(self, wordlist):
-        self.wordlist = wordlist
+    def generate_passphrase(self):
 
-    def generate_passphrase(self, num_words):
-        if num_words <= 0:
-            raise ValueError("Le nombre de mots dans la passphrase doit être supérieur à zéro.")
+        mot = ''
+        niveau = 0
+        nnombre = ['1','2','3','4','5','6']
+        nmot = ['','','','','','']
 
-        passphrase = [random.choice(self.wordlist) for _ in range(num_words)]
-        return " ".join(passphrase)
+        while niveau != 6:
+            nombre = ''
 
+            for _ in range(5):
+                nombre = nombre + random.choice(nnombre)
 
+            file_path="eff_large_wordlist.txt"
 
+            with open(file_path, 'r') as file:
+                for ligne in file:
+                    if nombre in ligne:
+                        rc = ligne.split()
+                        mot = rc[1]
+                        nmot[niveau] = mot
+                        break
+            niveau += 1
+
+        print("Passphrase :")
+
+        for word in nmot:
+            print(word, end=" ")
